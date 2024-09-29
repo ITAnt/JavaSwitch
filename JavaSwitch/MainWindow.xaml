@@ -1,0 +1,31 @@
+﻿<Window x:Class="JavaSwitch.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JavaSwitch"
+        mc:Ignorable="d"
+        Title="Java环境切换" Height="450" Width="800">
+    <Grid>
+        <TextBlock FontSize="18" FontWeight="Bold" Foreground="#ffbe4d4d"  HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="请用管理员身份打开本程序，否则没有权限修改设置！" VerticalAlignment="Top" Width="586"/>
+        <TextBlock FontSize="16" HorizontalAlignment="Left" Margin="10,47,0,0" TextWrapping="Wrap" Text="第一步：打开系统变量-Path，检查并添加%JAVA_PATH%（已添加则不用重复添加）" VerticalAlignment="Top" Width="629"/>
+        <TextBlock FontSize="16" HorizontalAlignment="Left" Margin="10,84,0,0" TextWrapping="Wrap" Text="第二步：添加已安装的JDK文件夹" VerticalAlignment="Top" Width="263"/>
+        <Button FontSize="16" Content="检查环境变量" HorizontalAlignment="Left" Margin="639,47,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+        <Button FontSize="16" Content="添加一个Java环境" HorizontalAlignment="Left" Margin="257,82,0,0" VerticalAlignment="Top" Click="Button_Add"/>
+        <TextBlock FontSize="16" HorizontalAlignment="Left" Margin="10,123,0,0" TextWrapping="Wrap" Text="第三步：点击按钮切换环境" VerticalAlignment="Top"/>
+        <ListBox x:Name="listBox" ItemsSource="{Binding Items}" Margin="0,156,0,0">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Margin="0, 10, 0, 10">
+                        <Viewbox Height="22" VerticalAlignment="Center">
+                            <RadioButton x:Name="radioButton" GroupName="RadioGroup" IsChecked="{Binding IsSelected, Mode=TwoWay}" Click="RadioButton_Click" />
+                        </Viewbox>
+                        <TextBlock Text="{Binding Text}" VerticalAlignment="Center"  FontSize="16" Margin="10,0,0,0"/>
+                        <Button Content="删除" VerticalAlignment="Center" Click="Button_Delete" FontSize="16" Margin="20,0,0,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </Grid>
+</Window>
